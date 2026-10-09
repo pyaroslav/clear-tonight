@@ -89,13 +89,23 @@ def predict_place(lat: float, lon: float, history: pd.DataFrame, night: date | N
 
 def main():
     """Nightly job: one JSON for the static site."""
-    out = {"generated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%MZ"), "cities": {}}
-    for key, c in data.CITIES.items():
-        hist = data.build(key)
-        out["cities"][key] = {"name": c["name"], "lat": c["lat"], "lon": c["lon"],
-                              **predict_place(c["lat"], c["lon"], hist)}
-        print(key, out["cities"][key]["window"], flush=True)
     site = Path(__file__).resolve().parents[1] / "site"
+    previous = json.loads((site / "tonight.json").read_text()).get("cities", {}) if (site / "tonight.json").exists() else {}
+    out = {"generated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%MZ"), "cities": {}}
+    failed = 0
+    for key, c in data.CITIES.items():
+        try:
+            hist = data.build(key)
+            out["cities"][key] = {"name": c["name"], "lat": c["lat"], "lon": c["lon"],
+                                  **predict_place(c["lat"], c["lon"], hist)}
+            print(key, out["cities"][key]["window"], flush=True)
+        except Exception as e:  # one city's outage shouldn't blank the page
+            failed += 1
+            print(key, "FAILED:", e, flush=True)
+            if key in previous:
+                out["cities"][key] = {**previous[key], "stale": True}
+    if failed == len(data.CITIES):
+        raise SystemExit("every city failed; keeping yesterday's file")
     (site / "tonight.json").write_text(json.dumps(out, indent=1))
 
 

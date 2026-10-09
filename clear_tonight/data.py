@@ -39,10 +39,17 @@ NIGHT_HOURS = [20, 21, 22, 23, 0, 1, 2, 3, 4]  # local time; hours after midnigh
 CLEAR = 25  # % cloud cover at or below which an hour counts as "clear enough to bother"
 
 
-def _get(url: str, params: dict) -> dict:
-    for attempt in range(5):
-        r = httpx.get(url, params=params, timeout=120)
-        if r.status_code == 429:
+def _get(url: str, params: dict, attempts: int = 5) -> dict:
+    """GET with backoff on rate limits and on flaky networks (CI runners see TLS timeouts)."""
+    for attempt in range(attempts):
+        try:
+            r = httpx.get(url, params=params, timeout=120)
+        except httpx.TransportError:
+            if attempt == attempts - 1:
+                raise
+            time.sleep(15 * (attempt + 1))
+            continue
+        if r.status_code == 429 or r.status_code >= 500:
             time.sleep(20 * (attempt + 1))
             continue
         r.raise_for_status()
