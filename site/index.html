@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clear Tonight?</title>
+<meta name="description" content="Will the sky really be clear tonight? The weather app's cloud forecast, corrected by TabPFN v2 from its own track record.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%230b1430'/><circle cx='20' cy='12' r='6' fill='%23f6e7b4'/><circle cx='8' cy='22' r='1.5' fill='white'/><circle cx='12' cy='8' r='1' fill='white'/></svg>">
+<style>
+:root {
+  --bg: #070b1a; --bg2: #0d1430; --card: #121a3a; --line: #24305e;
+  --ink: #eef1ff; --muted: #9aa6d6; --star: #f6e7b4; --go: #63e6a8; --no: #ff8a7a; --app: #6c7bb4;
+  font-size: 17px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); }
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.5;
+  background:
+    radial-gradient(1px 1px at 20% 30%, #fff8, transparent), radial-gradient(1px 1px at 70% 15%, #fff6, transparent),
+    radial-gradient(1px 1px at 85% 60%, #fff5, transparent), radial-gradient(1.5px 1.5px at 40% 80%, #fff7, transparent),
+    radial-gradient(1px 1px at 10% 70%, #fff4, transparent), linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+  background-attachment: fixed; min-height: 100vh;
+}
+main { max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; }
+h1 { font-size: 2.1rem; margin: 0 0 4px; letter-spacing: -.01em; }
+h1 span { color: var(--star); }
+.sub { color: var(--muted); margin: 0 0 20px; }
+h2 { font-size: 1.15rem; margin: 36px 0 10px; }
+.cities { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.cities button {
+  font: inherit; color: var(--ink); background: var(--card); border: 1px solid var(--line);
+  border-radius: 999px; padding: 8px 14px; min-height: 44px; cursor: pointer;
+}
+.cities button[aria-pressed="true"] { background: var(--star); color: #1a1a1a; border-color: var(--star); font-weight: 650; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 20px; margin-bottom: 14px; }
+.verdict { font-size: 1.7rem; font-weight: 750; margin: 0; }
+.verdict.go { color: var(--go); } .verdict.no { color: var(--no); }
+.why { color: var(--muted); margin: 6px 0 0; }
+.facts { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 14px; color: var(--muted); font-size: .9rem; }
+.facts b { color: var(--ink); font-weight: 600; }
+.strip { display: grid; grid-template-columns: 90px repeat(9, 1fr); gap: 4px; align-items: center; font-size: .78rem; }
+.strip .lbl { color: var(--muted); }
+.cell { height: 34px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 600; }
+.hour { text-align: center; color: var(--muted); }
+.legend { color: var(--muted); font-size: .85rem; margin-top: 10px; }
+svg text { fill: var(--muted); font-size: 15px; }
+.keys { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: .85rem; color: var(--muted); margin-top: 6px; }
+.keys i { display: inline-block; width: 22px; margin-right: 6px; vertical-align: middle; }
+.note { color: var(--muted); font-size: .9rem; }
+table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+th, td { text-align: right; padding: 6px 4px; border-bottom: 1px solid var(--line); }
+th:first-child, td:first-child { text-align: left; }
+.better { color: var(--go); }
+footer { color: var(--muted); font-size: .8rem; margin-top: 40px; }
+a { color: var(--star); }
+@media (max-width: 520px) { .strip { grid-template-columns: 54px repeat(9, 1fr); font-size: .6rem; gap: 3px; } .cell { height: 30px; letter-spacing: -.03em; } .verdict { font-size: 1.4rem; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Clear <span>Tonight?</span></h1>
+  <p class="sub">Your weather app's cloud forecast, corrected by an open model that learned from the forecast's own mistakes.</p>
+
+  <div class="cities" id="cities" role="group" aria-label="City"></div>
+
+  <section class="card" aria-live="polite">
+    <p class="verdict" id="verdict">Loading…</p>
+    <p class="why" id="why"></p>
+    <div class="facts" id="facts"></div>
+  </section>
+
+  <section class="card">
+    <div class="strip" id="strip"></div>
+    <p class="legend">Top row: the cloud cover your weather app forecast (lower is better). Bottom row: Clear Tonight's chance that the hour is actually clear (cloud ≤ 25%).</p>
+  </section>
+
+  <h2>Does the correction actually help?</h2>
+  <section class="card">
+    <p class="note" id="bt-intro"></p>
+    <table id="bt"></table>
+  </section>
+
+  <h2>How many nights of history does it need?</h2>
+  <section class="card">
+    <svg id="curve" viewBox="0 0 680 260" role="img" aria-label="Brier score by nights of training history"></svg>
+    <div class="keys" id="keys"></div>
+    <p class="note">Brier score (lower is better), averaged over 6 cities × 6 months, training only on the last K nights before each month. TabPFN v2 is the only 15-feature model that beats the raw forecast from the first week; the 15-feature logistic regression and gradient boosting need two to four months before they're even as good as the raw forecast.</p>
+  </section>
+
+  <footer>
+    <p>Updated <span id="gen"></span>. Probabilities come from the GFS forecast issued about 24 hours ahead, corrected per city by <b>TabPFN v2</b>. Truth for training is ERA5 reanalysis cloud cover (a model-assisted reconstruction, not a human looking up).</p>
+    <p>Built with PriorLabs-TabPFN. Weather data by <a href="https://open-meteo.com/">Open-Meteo.com</a> (CC BY 4.0). Code: <a href="https://github.com/pyaroslav/clear-tonight">github.com/pyaroslav/clear-tonight</a>.</p>
+  </footer>
+</main>
+
+<script>
+"use strict";
+const $ = (s) => document.querySelector(s);
+const pct = (x) => Math.round(x * 100) + "%";
+let T, R, city = "seattle";
+
+function color(p) {          // 0 → cloudy slate, 1 → clear mint
+  const a = [52, 62, 110], b = [99, 230, 168];
+  return `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * p)).join(",")})`;
+}
+
+function renderCity() {
+  const c = T.cities[city];
+  document.querySelectorAll("#cities button").forEach(b => b.setAttribute("aria-pressed", b.dataset.k === city));
+  const w = c.window, m = c.moon;
+  const v = $("#verdict");
+  if (w) {
+    v.textContent = `Go ${w.start}–${w.end}`;
+    v.className = "verdict go";
+    $("#why").textContent = `${pct(w.p_mean)} average chance the sky is really clear in that window. The weather app called ${c.app_clear_hours} of 9 night hours clear.`;
+  } else {
+    const best = c.hours.reduce((a, h) => h.p_clear > a.p_clear ? h : a, c.hours[0] || { p_clear: 0, time: "" });
+    v.textContent = "Probably not tonight";
+    v.className = "verdict no";
+    $("#why").textContent = `No two clear-looking hours in a row. Best single hour: ${best.time} at ${pct(best.p_clear)}. The weather app called ${c.app_clear_hours} of 9 hours clear.`;
+  }
+  const moonTxt = m.illumination < 15 ? "dark sky, great for stars" : m.illumination > 85 ? "bright, washes out faint stars" : "partly lit";
+  $("#facts").innerHTML = "";
+  [["Night of", c.night], ["Moon", `${m.illumination}% lit (${moonTxt})`], ["Moonrise", m.rise || "—"], ["Moonset", m.set || "—"],
+   ["Model trained on", `${c.trained_on_nights} nights`]].forEach(([k, val]) => {
+    const s = document.createElement("span"); s.innerHTML = `${k}: <b></b>`; s.querySelector("b").textContent = val; $("#facts").append(s);
+  });
+  const strip = $("#strip"); strip.innerHTML = "";
+  const add = (cls, txt, style) => { const d = document.createElement("div"); d.className = cls; d.textContent = txt; if (style) d.style.cssText = style; strip.append(d); };
+  add("lbl", "");
+  c.hours.forEach(h => add("hour", h.time.slice(0, 2)));
+  add("lbl", "App cloud");
+  c.hours.forEach(h => add("cell", h.app_cloud_cover + "%", `background:${color(1 - h.app_cloud_cover / 100)};color:#0b1020`));
+  add("lbl", "Clear chance");
+  c.hours.forEach(h => add("cell", pct(h.p_clear), `background:${color(h.p_clear)};color:#0b1020`));
+
+  const pc = R.per_city[city];
+  $("#bt-intro").textContent = `Walk-forward backtest for ${c.name}, last ${R.months} months, training only on earlier data. A "go night" means at least two consecutive clear hours.`;
+  const rows = [["", "Weather app as-is", "Clear Tonight (TabPFN v2)"],
+    ["Brier score (lower is better)", pc.raw_forecast.brier, pc.tabpfn_v2.brier],
+    ["When it says go, sky really clear", pct(pc.raw_forecast.go_precision), pct(pc.tabpfn_v2.go_precision)],
+    ["Clear nights it caught", pct(pc.raw_forecast.go_recall), pct(pc.tabpfn_v2.go_recall)],
+    ["Wasted trips (said go, was cloudy)", pc.raw_forecast.false_go, pc.tabpfn_v2.false_go],
+    ["Missed clear nights", pc.raw_forecast.missed_go, pc.tabpfn_v2.missed_go]];
+  $("#bt").innerHTML = "";
+  rows.forEach((r, i) => {
+    const tr = document.createElement("tr");
+    r.forEach((cell, j) => { const td = document.createElement(i ? "td" : "th"); td.textContent = cell; tr.append(td); });
+    $("#bt").append(tr);
+  });
+}
+
+function renderCurve() {
+  const L = R.learning_curve, svg = $("#curve"), W = 680, H = 260, P = { l: 52, r: 16, t: 14, b: 40 };
+  const ks = L.k, xs = ks.map((_, i) => P.l + i * (W - P.l - P.r) / (ks.length - 1));
+  const all = [L.raw_forecast, ...L.tabpfn_v2, ...L.logistic, ...L.gboost, ...L.raw_calibrated];
+  const lo = Math.min(...all) - 0.01, hi = Math.max(...all) + 0.01;
+  const y = (v) => P.t + (H - P.t - P.b) * (hi - v) / (hi - lo);
+  let s = "";
+  [lo, (lo + hi) / 2, hi].forEach(v => s += `<line x1="${P.l}" x2="${W - P.r}" y1="${y(v)}" y2="${y(v)}" stroke="#24305e"/><text x="4" y="${y(v) + 4}">${v.toFixed(2)}</text>`);
+  ks.forEach((k, i) => s += `<text x="${xs[i] - 10}" y="${H - 20}">${k}</text>`);
+  s += `<text x="${(W - P.r) / 2 - 50}" y="${H - 1}">nights of history (K)</text>`;
+  s += `<line x1="${P.l}" x2="${W - P.r}" y1="${y(L.raw_forecast)}" y2="${y(L.raw_forecast)}" stroke="#6c7bb4" stroke-dasharray="5 4" stroke-width="2"/>`;
+  const series = [["tabpfn_v2", "#63e6a8", "TabPFN v2", 3.5], ["logistic", "#ff8a7a", "logistic", 2], ["gboost", "#c79bff", "grad. boost", 2], ["raw_calibrated", "#f6e7b4", "recalibrated", 2]];
+  series.forEach(([k, col, name, w]) => {
+    s += `<polyline fill="none" stroke="${col}" stroke-width="${w}" points="${L[k].map((v, i) => xs[i] + "," + y(v)).join(" ")}"/>`;
+  });
+  svg.innerHTML = s;
+  $("#keys").innerHTML = [["#6c7bb4", "weather app as-is", true], ...series.map(([, c, n]) => [c, n])]
+    .map(([c, n, dash]) => `<span><i style="border-top:3px ${dash ? "dashed" : "solid"} ${c}"></i>${n}</span>`).join("");
+}
+
+(async () => {
+  [T, R] = await Promise.all([fetch("tonight.json").then(r => r.json()), fetch("results.json").then(r => r.json())]);
+  try { city = localStorage.getItem("ct.city") || city; } catch {}
+  if (!T.cities[city]) city = Object.keys(T.cities)[0];
+  Object.entries(T.cities).forEach(([k, c]) => {
+    const b = document.createElement("button"); b.dataset.k = k; b.textContent = c.name;
+    b.onclick = () => { city = k; try { localStorage.setItem("ct.city", k); } catch {} renderCity(); };
+    $("#cities").append(b);
+  });
+  $("#gen").textContent = T.generated.replace("T", " ").replace("Z", "") + " UTC";
+  renderCity(); renderCurve();
+})();
+</script>
+</body>
+</html>

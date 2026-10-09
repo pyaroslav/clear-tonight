@@ -1,0 +1,140 @@
+seattle      2025-11  train= 5756  best=raw_calibrated brier=0.068
+seattle      2025-12  train= 6026  best=logistic       brier=0.079
+seattle      2026-01  train= 6305  best=logistic       brier=0.089
+seattle      2026-02  train= 6584  best=tabpfn_v2      brier=0.114
+seattle      2026-03  train= 6836  best=tabpfn_v2      brier=0.100
+seattle      2026-04  train= 7115  best=logistic       brier=0.092
+seattle      2026-05  train= 7385  best=tabpfn_v2      brier=0.134
+seattle      2026-06  train= 7664  best=tabpfn_v2      brier=0.138
+seattle      2026-07  train= 7934  best=gboost         brier=0.170
+seattle      2026-08  train= 8213  best=logistic       brier=0.121
+seattle      2026-09  train= 8492  best=logistic       brier=0.096
+seattle      2026-10  train= 8762  best=gboost         brier=0.136
+minneapolis  2025-11  train= 5756  best=logistic       brier=0.134
+minneapolis  2025-12  train= 6026  best=logistic       brier=0.120
+minneapolis  2026-01  train= 6305  best=tabpfn_v2      brier=0.161
+minneapolis  2026-02  train= 6584  best=logistic       brier=0.166
+minneapolis  2026-03  train= 6836  best=tabpfn_v2      brier=0.125
+minneapolis  2026-04  train= 7115  best=tabpfn_v2      brier=0.126
+minneapolis  2026-05  train= 7385  best=tabpfn_v2      brier=0.164
+minneapolis  2026-06  train= 7664  best=tabpfn_v2      brier=0.191
+minneapolis  2026-07  train= 7934  best=logistic       brier=0.166
+minneapolis  2026-08  train= 8213  best=logistic       brier=0.148
+minneapolis  2026-09  train= 8492  best=tabpfn_v2      brier=0.134
+minneapolis  2026-10  train= 8762  best=tabpfn_v2      brier=0.101
+chicago      2025-11  train= 5756  best=tabpfn_v2      brier=0.144
+chicago      2025-12  train= 6026  best=tabpfn_v2      brier=0.069
+chicago      2026-01  train= 6305  best=logistic       brier=0.121
+chicago      2026-02  train= 6584  best=logistic       brier=0.164
+chicago      2026-03  train= 6836  best=logistic       brier=0.101
+chicago      2026-04  train= 7115  best=logistic       brier=0.110
+chicago      2026-05  train= 7385  best=tabpfn_v2      brier=0.166
+chicago      2026-06  train= 7664  best=logistic       brier=0.153
+chicago      2026-07  train= 7934  best=tabpfn_v2      brier=0.134
+chicago      2026-08  train= 8213  best=tabpfn_v2      brier=0.186
+chicago      2026-09  train= 8492  best=logistic       brier=0.158
+chicago      2026-10  train= 8762  best=raw_forecast   brier=0.000
+denver       2025-11  train= 5756  best=tabpfn_v2      brier=0.145
+denver       2025-12  train= 6026  best=logistic       brier=0.175
+denver       2026-01  train= 6305  best=logistic       brier=0.167
+denver       2026-02  train= 6584  best=logistic       brier=0.161
+denver       2026-03  train= 6836  best=logistic       brier=0.152
+denver       2026-04  train= 7115  best=logistic       brier=0.135
+denver       2026-05  train= 7385  best=logistic       brier=0.148
+denver       2026-06  train= 7664  best=logistic       brier=0.164
+denver       2026-07  train= 7934  best=logistic       brier=0.184
+denver       2026-08  train= 8213  best=logistic       brier=0.189
+denver       2026-09  train= 8492  best=logistic       brier=0.146
+denver       2026-10  train= 8762  best=gboost         brier=0.078
+austin       2025-11  train= 5756  best=tabpfn_v2      brier=0.082
+austin       2025-12  train= 6026  best=raw_calibrated brier=0.134
+austin       2026-01  train= 6305  best=gboost         brier=0.063
+austin       2026-02  train= 6584  best=logistic       brier=0.153
+austin       2026-03  train= 6836  best=logistic       brier=0.119
+austin       2026-04  train= 7115  best=logistic       brier=0.101
+austin       2026-05  train= 7385  best=gboost         brier=0.137
+austin       2026-06  train= 7664  best=raw_calibrated brier=0.183
+austin       2026-07  train= 7934  best=tabpfn_v2      brier=0.209
+austin       2026-08  train= 8213  best=tabpfn_v2      brier=0.161
+austin       2026-09  train= 8492  best=tabpfn_v2      brier=0.255
+austin       2026-10  train= 8762  best=raw_forecast   brier=0.000
+london       2025-11  train= 5756  best=logistic       brier=0.148
+london       2025-12  train= 6026  best=logistic       brier=0.129
+london       2026-01  train= 6305  best=tabpfn_v2      brier=0.130
+london       2026-02  train= 6584  best=tabpfn_v2      brier=0.070
+london       2026-03  train= 6836  best=logistic       brier=0.170
+london       2026-04  train= 7115  best=tabpfn_v2      brier=0.124
+london       2026-05  train= 7385  best=logistic       brier=0.168
+london       2026-06  train= 7664  best=tabpfn_v2      brier=0.161
+london       2026-07  train= 7934  best=tabpfn_v2      brier=0.131
+london       2026-08  train= 8213  best=logistic       brier=0.178
+london       2026-09  train= 8492  best=tabpfn_v2      brier=0.102
+london       2026-10  train= 8762  best=raw_calibrated brier=0.061
+                brier  accuracy  go_nights  false_go  missed_go  seconds  go_precision  go_recall
+model                                                                                            
+logistic        0.137     0.806       1080       120        295    0.007         0.867      0.727
+tabpfn_v2       0.139     0.801       1080       117        326    0.733         0.866      0.698
+gboost          0.150     0.786       1080       137        302    0.362         0.850      0.720
+raw_calibrated  0.161     0.781       1080       216        205    0.000         0.802      0.810
+raw_forecast    0.216     0.784       1080       188        239    0.000         0.817      0.779
+climatology     0.231     0.624       1080       142        787    0.000         0.674      0.271
+
+seattle
+                brier  accuracy  go_nights  false_go  missed_go  seconds  go_precision  go_recall
+model                                                                                            
+tabpfn_v2       0.117     0.835        143        12         50    0.810         0.886      0.650
+logistic        0.117     0.842        143        17         44    0.007         0.853      0.692
+gboost          0.120     0.837        143         9         46    0.364         0.915      0.678
+raw_calibrated  0.140     0.813        143        30         30    0.000         0.790      0.790
+raw_forecast    0.185     0.815        143        26         31    0.000         0.812      0.783
+climatology     0.190     0.708        143         9        121    0.000         0.710      0.154
+
+minneapolis
+                brier  accuracy  go_nights  false_go  missed_go  seconds  go_precision  go_recall
+model                                                                                            
+tabpfn_v2       0.148     0.793        179        21         60    0.713         0.850      0.665
+logistic        0.150     0.785        179        21         59    0.006         0.851      0.670
+gboost          0.165     0.754        179        28         55    0.361         0.816      0.693
+raw_calibrated  0.171     0.762        179        37         40    0.000         0.790      0.777
+climatology     0.232     0.608        179        50        104    0.000         0.600      0.419
+raw_forecast    0.233     0.767        179        29         51    0.000         0.815      0.715
+
+chicago
+                brier  accuracy  go_nights  false_go  missed_go  seconds  go_precision  go_recall
+model                                                                                            
+logistic        0.130     0.815        161        20         49    0.007         0.848      0.696
+tabpfn_v2       0.130     0.818        161        19         53    0.722         0.850      0.671
+gboost          0.140     0.807        161        21         55    0.357         0.835      0.658
+raw_calibrated  0.147     0.802        161        38         32    0.000         0.772      0.801
+raw_forecast    0.191     0.809        161        33         37    0.000         0.790      0.770
+climatology     0.225     0.625        161        16        145    0.000         0.500      0.099
+
+denver
+                brier  accuracy  go_nights  false_go  missed_go  seconds  go_precision  go_recall
+model                                                                                            
+logistic        0.155     0.781        204        35         33    0.007         0.830      0.838
+tabpfn_v2       0.164     0.765        204        35         48    0.719         0.817      0.765
+gboost          0.176     0.750        204        36         42    0.371         0.818      0.794
+raw_calibrated  0.197     0.721        204        60         30    0.000         0.744      0.853
+climatology     0.229     0.641        204        29        109    0.000         0.766      0.466
+raw_forecast    0.279     0.721        204        57         37    0.000         0.746      0.819
+
+austin
+                brier  accuracy  go_nights  false_go  missed_go  seconds  go_precision  go_recall
+model                                                                                            
+logistic        0.137     0.799        210        17         50    0.007         0.904      0.762
+tabpfn_v2       0.137     0.793        210        20         50    0.721         0.889      0.762
+gboost          0.152     0.784        210        28         45    0.362         0.855      0.786
+raw_calibrated  0.160     0.786        210        34         28    0.000         0.843      0.867
+raw_forecast    0.214     0.786        210        27         36    0.000         0.866      0.829
+climatology     0.288     0.510        210        38        125    0.000         0.691      0.405
+
+london
+                brier  accuracy  go_nights  false_go  missed_go  seconds  go_precision  go_recall
+model                                                                                            
+logistic        0.135     0.812        183        10         60    0.006         0.925      0.672
+tabpfn_v2       0.140     0.801        183        10         65    0.712         0.922      0.645
+raw_calibrated  0.149     0.803        183        17         45    0.000         0.890      0.754
+gboost          0.150     0.787        183        15         59    0.356         0.892      0.678
+raw_forecast    0.194     0.806        183        16         47    0.000         0.895      0.743
+climatology     0.220     0.651        183         0        183    0.000           NaN      0.000

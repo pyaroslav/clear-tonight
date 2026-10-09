@@ -1,0 +1,212 @@
+{
+ "months": 12,
+ "overall": [
+  {
+   "model": "logistic",
+   "brier": 0.137,
+   "accuracy": 0.806,
+   "go_nights": 1080,
+   "false_go": 120,
+   "missed_go": 295,
+   "seconds": 0.007,
+   "go_precision": 0.867,
+   "go_recall": 0.727
+  },
+  {
+   "model": "tabpfn_v2",
+   "brier": 0.139,
+   "accuracy": 0.801,
+   "go_nights": 1080,
+   "false_go": 117,
+   "missed_go": 326,
+   "seconds": 0.733,
+   "go_precision": 0.866,
+   "go_recall": 0.698
+  },
+  {
+   "model": "gboost",
+   "brier": 0.15,
+   "accuracy": 0.786,
+   "go_nights": 1080,
+   "false_go": 137,
+   "missed_go": 302,
+   "seconds": 0.362,
+   "go_precision": 0.85,
+   "go_recall": 0.72
+  },
+  {
+   "model": "raw_calibrated",
+   "brier": 0.161,
+   "accuracy": 0.781,
+   "go_nights": 1080,
+   "false_go": 216,
+   "missed_go": 205,
+   "seconds": 0.0,
+   "go_precision": 0.802,
+   "go_recall": 0.81
+  },
+  {
+   "model": "raw_forecast",
+   "brier": 0.216,
+   "accuracy": 0.784,
+   "go_nights": 1080,
+   "false_go": 188,
+   "missed_go": 239,
+   "seconds": 0.0,
+   "go_precision": 0.817,
+   "go_recall": 0.779
+  },
+  {
+   "model": "climatology",
+   "brier": 0.231,
+   "accuracy": 0.624,
+   "go_nights": 1080,
+   "false_go": 142,
+   "missed_go": 787,
+   "seconds": 0.0,
+   "go_precision": 0.674,
+   "go_recall": 0.271
+  }
+ ],
+ "per_city": {
+  "austin": {
+   "tabpfn_v2": {
+    "brier": 0.137,
+    "go_precision": 0.889,
+    "go_recall": 0.762,
+    "false_go": 20,
+    "missed_go": 50
+   },
+   "raw_forecast": {
+    "brier": 0.214,
+    "go_precision": 0.866,
+    "go_recall": 0.829,
+    "false_go": 27,
+    "missed_go": 36
+   }
+  },
+  "chicago": {
+   "tabpfn_v2": {
+    "brier": 0.13,
+    "go_precision": 0.85,
+    "go_recall": 0.671,
+    "false_go": 19,
+    "missed_go": 53
+   },
+   "raw_forecast": {
+    "brier": 0.191,
+    "go_precision": 0.79,
+    "go_recall": 0.77,
+    "false_go": 33,
+    "missed_go": 37
+   }
+  },
+  "denver": {
+   "tabpfn_v2": {
+    "brier": 0.164,
+    "go_precision": 0.817,
+    "go_recall": 0.765,
+    "false_go": 35,
+    "missed_go": 48
+   },
+   "raw_forecast": {
+    "brier": 0.279,
+    "go_precision": 0.746,
+    "go_recall": 0.819,
+    "false_go": 57,
+    "missed_go": 37
+   }
+  },
+  "london": {
+   "tabpfn_v2": {
+    "brier": 0.14,
+    "go_precision": 0.922,
+    "go_recall": 0.645,
+    "false_go": 10,
+    "missed_go": 65
+   },
+   "raw_forecast": {
+    "brier": 0.194,
+    "go_precision": 0.895,
+    "go_recall": 0.743,
+    "false_go": 16,
+    "missed_go": 47
+   }
+  },
+  "minneapolis": {
+   "tabpfn_v2": {
+    "brier": 0.148,
+    "go_precision": 0.85,
+    "go_recall": 0.665,
+    "false_go": 21,
+    "missed_go": 60
+   },
+   "raw_forecast": {
+    "brier": 0.233,
+    "go_precision": 0.815,
+    "go_recall": 0.715,
+    "false_go": 29,
+    "missed_go": 51
+   }
+  },
+  "seattle": {
+   "tabpfn_v2": {
+    "brier": 0.117,
+    "go_precision": 0.886,
+    "go_recall": 0.65,
+    "false_go": 12,
+    "missed_go": 50
+   },
+   "raw_forecast": {
+    "brier": 0.185,
+    "go_precision": 0.812,
+    "go_recall": 0.783,
+    "false_go": 26,
+    "missed_go": 31
+   }
+  }
+ },
+ "learning_curve": {
+  "raw_forecast": 0.237,
+  "k": [
+   7,
+   14,
+   30,
+   60,
+   120,
+   365
+  ],
+  "gboost": [
+   0.259,
+   0.277,
+   0.248,
+   0.253,
+   0.237,
+   0.168
+  ],
+  "logistic": [
+   0.357,
+   0.316,
+   0.26,
+   0.199,
+   0.161,
+   0.149
+  ],
+  "raw_calibrated": [
+   0.199,
+   0.183,
+   0.179,
+   0.179,
+   0.176,
+   0.174
+  ],
+  "tabpfn_v2": [
+   0.214,
+   0.204,
+   0.186,
+   0.176,
+   0.171,
+   0.153
+  ]
+ }
+}

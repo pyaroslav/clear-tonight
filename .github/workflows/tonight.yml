@@ -1,0 +1,26 @@
+name: tonight
+# Every afternoon (US evening prep): refresh site/tonight.json for the six cities.
+on:
+  schedule:
+    - cron: "0 21 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  predict:
+    runs-on: ubuntu-latest
+    env:
+      TABPFN_ALLOW_CPU_LARGE_DATASET: "true"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install --index-url https://download.pytorch.org/whl/cpu torch && pip install -e .
+      - run: python -m clear_tonight.predict
+      - run: |
+          git config user.name "clear-tonight-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add site/tonight.json
+          git diff --cached --quiet || git commit -m "tonight: $(date -u +%F)"
+          git push
