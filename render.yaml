@@ -1,0 +1,13 @@
+# Render Blueprint: a free static site serving site/ (tonight.json is refreshed daily by the GitHub Action,
+# and every push redeploys the site).
+services:
+  - type: web
+    runtime: static
+    name: clear-tonight
+    buildCommand: "echo static"
+    staticPublishPath: ./site
+    autoDeploy: true
+    headers:
+      - path: /*.json
+        name: Cache-Control
+        value: no-cache
