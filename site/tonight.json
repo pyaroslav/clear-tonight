@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-09T19:58Z",
+ "generated": "2026-10-09T20:15Z",
  "cities": {
   "seattle": {
    "name": "Seattle, WA",
@@ -9,51 +9,56 @@
    "hours": [
     {
      "time": "20:00",
-     "p_clear": 0.29,
+     "p_clear": 0.47,
      "app_cloud_cover": 73
     },
     {
      "time": "21:00",
-     "p_clear": 0.35,
+     "p_clear": 0.42,
      "app_cloud_cover": 100
     },
     {
      "time": "22:00",
-     "p_clear": 0.21,
+     "p_clear": 0.28,
      "app_cloud_cover": 100
     },
     {
      "time": "23:00",
-     "p_clear": 0.35,
+     "p_clear": 0.53,
      "app_cloud_cover": 61
     },
     {
      "time": "00:00",
-     "p_clear": 0.48,
+     "p_clear": 0.57,
      "app_cloud_cover": 31
     },
     {
      "time": "01:00",
-     "p_clear": 0.34,
+     "p_clear": 0.47,
      "app_cloud_cover": 23
     },
     {
      "time": "02:00",
-     "p_clear": 0.35,
+     "p_clear": 0.45,
      "app_cloud_cover": 16
     },
     {
      "time": "03:00",
-     "p_clear": 0.33,
+     "p_clear": 0.43,
      "app_cloud_cover": 16
     },
     {
      "time": "04:00",
-     "p_clear": 0.36,
+     "p_clear": 0.43,
      "app_cloud_cover": 5
     }
    ],
-   "window": null,
+   "window": {
+    "start": "23:00",
+    "end": "01:00",
+    "hours": 2,
+    "p_mean": 0.55
+   },
    "app_clear_hours": 4,
    "moon": {
     "illumination": 0,
@@ -71,32 +76,32 @@
    "hours": [
     {
      "time": "20:00",
-     "p_clear": 0.83,
+     "p_clear": 0.87,
      "app_cloud_cover": 3
     },
     {
      "time": "21:00",
-     "p_clear": 0.8,
+     "p_clear": 0.83,
      "app_cloud_cover": 3
     },
     {
      "time": "22:00",
-     "p_clear": 0.75,
+     "p_clear": 0.72,
      "app_cloud_cover": 8
     },
     {
      "time": "23:00",
-     "p_clear": 0.7,
+     "p_clear": 0.66,
      "app_cloud_cover": 10
     },
     {
      "time": "00:00",
-     "p_clear": 0.78,
+     "p_clear": 0.79,
      "app_cloud_cover": 3
     },
     {
      "time": "01:00",
-     "p_clear": 0.78,
+     "p_clear": 0.8,
      "app_cloud_cover": 8
     },
     {
@@ -119,7 +124,7 @@
     "start": "20:00",
     "end": "05:00",
     "hours": 9,
-    "p_mean": 0.8
+    "p_mean": 0.81
    },
    "app_clear_hours": 9,
    "moon": {
@@ -138,17 +143,17 @@
    "hours": [
     {
      "time": "20:00",
-     "p_clear": 0.75,
+     "p_clear": 0.77,
      "app_cloud_cover": 20
     },
     {
      "time": "21:00",
-     "p_clear": 0.81,
+     "p_clear": 0.8,
      "app_cloud_cover": 1
     },
     {
      "time": "22:00",
-     "p_clear": 0.56,
+     "p_clear": 0.63,
      "app_cloud_cover": 100
     },
     {
@@ -158,27 +163,27 @@
     },
     {
      "time": "00:00",
-     "p_clear": 0.76,
+     "p_clear": 0.78,
      "app_cloud_cover": 4
     },
     {
      "time": "01:00",
-     "p_clear": 0.81,
+     "p_clear": 0.86,
      "app_cloud_cover": 0
     },
     {
      "time": "02:00",
-     "p_clear": 0.82,
+     "p_clear": 0.87,
      "app_cloud_cover": 0
     },
     {
      "time": "03:00",
-     "p_clear": 0.55,
+     "p_clear": 0.65,
      "app_cloud_cover": 100
     },
     {
      "time": "04:00",
-     "p_clear": 0.54,
+     "p_clear": 0.66,
      "app_cloud_cover": 100
     }
    ],
@@ -186,7 +191,7 @@
     "start": "20:00",
     "end": "05:00",
     "hours": 9,
-    "p_mean": 0.7
+    "p_mean": 0.75
    },
    "app_clear_hours": 5,
    "moon": {
@@ -205,17 +210,17 @@
    "hours": [
     {
      "time": "20:00",
-     "p_clear": 0.8,
+     "p_clear": 0.88,
      "app_cloud_cover": 100
     },
     {
      "time": "21:00",
-     "p_clear": 0.7,
+     "p_clear": 0.6,
      "app_cloud_cover": 100
     },
     {
      "time": "22:00",
-     "p_clear": 0.65,
+     "p_clear": 0.48,
      "app_cloud_cover": 8
     },
     {
@@ -225,12 +230,12 @@
     },
     {
      "time": "00:00",
-     "p_clear": 0.68,
+     "p_clear": 0.86,
      "app_cloud_cover": 0
     },
     {
      "time": "01:00",
-     "p_clear": 0.65,
+     "p_clear": 0.63,
      "app_cloud_cover": 0
     },
     {
@@ -245,15 +250,15 @@
     },
     {
      "time": "04:00",
-     "p_clear": 0.57,
+     "p_clear": 0.54,
      "app_cloud_cover": 0
     }
    ],
    "window": {
-    "start": "20:00",
+    "start": "23:00",
     "end": "05:00",
-    "hours": 9,
-    "p_mean": 0.65
+    "hours": 6,
+    "p_mean": 0.64
    },
    "app_clear_hours": 7,
    "moon": {
@@ -272,42 +277,42 @@
    "hours": [
     {
      "time": "20:00",
-     "p_clear": 0.96,
+     "p_clear": 0.95,
      "app_cloud_cover": 3
     },
     {
      "time": "21:00",
-     "p_clear": 0.97,
+     "p_clear": 0.96,
      "app_cloud_cover": 2
     },
     {
      "time": "22:00",
-     "p_clear": 0.98,
+     "p_clear": 0.97,
      "app_cloud_cover": 0
     },
     {
      "time": "23:00",
-     "p_clear": 0.98,
+     "p_clear": 0.97,
      "app_cloud_cover": 0
     },
     {
      "time": "00:00",
-     "p_clear": 0.98,
+     "p_clear": 0.97,
      "app_cloud_cover": 0
     },
     {
      "time": "01:00",
-     "p_clear": 0.98,
+     "p_clear": 0.97,
      "app_cloud_cover": 0
     },
     {
      "time": "02:00",
-     "p_clear": 0.98,
+     "p_clear": 0.97,
      "app_cloud_cover": 0
     },
     {
      "time": "03:00",
-     "p_clear": 0.98,
+     "p_clear": 0.97,
      "app_cloud_cover": 0
     },
     {
@@ -320,7 +325,7 @@
     "start": "20:00",
     "end": "05:00",
     "hours": 9,
-    "p_mean": 0.98
+    "p_mean": 0.97
    },
    "app_clear_hours": 9,
    "moon": {
@@ -339,47 +344,47 @@
    "hours": [
     {
      "time": "20:00",
-     "p_clear": 0.84,
+     "p_clear": 0.92,
      "app_cloud_cover": 0
     },
     {
      "time": "21:00",
-     "p_clear": 0.85,
+     "p_clear": 0.92,
      "app_cloud_cover": 0
     },
     {
      "time": "22:00",
-     "p_clear": 0.81,
+     "p_clear": 0.91,
      "app_cloud_cover": 6
     },
     {
      "time": "23:00",
-     "p_clear": 0.73,
+     "p_clear": 0.83,
      "app_cloud_cover": 5
     },
     {
      "time": "00:00",
-     "p_clear": 0.89,
+     "p_clear": 0.94,
      "app_cloud_cover": 0
     },
     {
      "time": "01:00",
-     "p_clear": 0.81,
+     "p_clear": 0.88,
      "app_cloud_cover": 0
     },
     {
      "time": "02:00",
-     "p_clear": 0.82,
+     "p_clear": 0.9,
      "app_cloud_cover": 5
     },
     {
      "time": "03:00",
-     "p_clear": 0.82,
+     "p_clear": 0.89,
      "app_cloud_cover": 5
     },
     {
      "time": "04:00",
-     "p_clear": 0.84,
+     "p_clear": 0.91,
      "app_cloud_cover": 6
     }
    ],
@@ -387,7 +392,7 @@
     "start": "20:00",
     "end": "05:00",
     "hours": 9,
-    "p_mean": 0.82
+    "p_mean": 0.9
    },
    "app_clear_hours": 9,
    "moon": {
