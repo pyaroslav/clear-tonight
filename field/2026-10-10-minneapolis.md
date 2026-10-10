@@ -3,7 +3,6 @@
 Forecast made 2026-10-10 08:23 CDT (13:23 UTC), before going outside. Committed before the walk so it can't be edited after.
 
 ```
-/home/yaroub/Python/BUISINESS/KinetiStackLLC/Projects/DEVto/WeekendChallenges/HacktoberfestWeek1-TouchGrass-2026-10-11/clear-tonight/.venv/bin/python
 Learning how wrong the forecast usually is at 44.98, -93.27 (first run downloads ~32 months)…
 
 Night of 2026-10-10, trained on 977 nights
