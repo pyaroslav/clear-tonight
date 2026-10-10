@@ -1,8 +1,8 @@
 name: tonight
-# Every afternoon (US evening prep): refresh site/tonight.json for the six cities.
+# Every day before US dusk: refresh site/tonight.json for the six cities.
 on:
   schedule:
-    - cron: "0 21 * * *"
+    - cron: "0 18 * * *"  # GitHub often starts scheduled runs late; this lands before US dusk
   workflow_dispatch:
 permissions:
   contents: write
