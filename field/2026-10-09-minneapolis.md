@@ -23,4 +23,4 @@ Astronomical darkness begins about 20:15 CDT. Moon 0% lit (new Moon).
 
 ## What actually happened
 
-_to be filled in after the walk_
+I didn't go out that night, so there's no first-hand report. The walk moved to the next night: [2026-10-10](2026-10-10-minneapolis.md). This forecast stays here unedited, and it will be scored against ERA5 once that data is published (about 5 days later).
