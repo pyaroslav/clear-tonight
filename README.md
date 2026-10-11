@@ -22,7 +22,7 @@ Cloud cover decides whether a night walk, a meteor shower or a look at the stars
 | Minneapolis | 0.233 | 0.148 | 36% | 29 → 21 | 51 → 60 |
 | Seattle | 0.185 | 0.117 | 37% | 26 → 12 | 31 → 50 |
 
-Brier score: lower is better. A *wasted trip* is a night the forecast said "go" (two consecutive clear hours) and the sky was cloudy. Clear Tonight is more cautious than the app: far fewer wasted trips, more missed clear nights. A plain logistic regression on the same 15 features scores about the same as TabPFN v2 when there is a lot of history.
+Brier score: lower is better. A *wasted trip* is a night the forecast said "go" (two consecutive clear hours) and the sky was cloudy. Clear Tonight is more cautious than the app: far fewer wasted trips, more missed clear nights. A plain logistic regression on the same 12 features scores about the same as TabPFN v2 when there is a lot of history.
 
 ### How much history does it need?
 
@@ -37,7 +37,7 @@ Training on only the last K nights before each of 6 test months, averaged over 6
 | 120 | 0.171 | 0.161 | 0.237 | 0.176 |
 | 365 | 0.153 | 0.149 | 0.168 | 0.174 |
 
-TabPFN v2 is the only 15-feature model that beats the raw forecast from the first week. The others need two (logistic regression) to four (gradient boosting) months before they even match it. With two months TabPFN is the best of all, and with a year a plain logistic regression catches up. That's why it's the right tool for "point it at your backyard".
+TabPFN v2 is the only 12-feature model that beats the raw forecast from the first week. The others need two (logistic regression) to four (gradient boosting) months before they even match it. With two months TabPFN is the best of all, and with a year a plain logistic regression catches up. That's why it's the right tool for "point it at your backyard".
 
 ## Run it
 
