@@ -6,6 +6,8 @@
 
 **Live:** https://clear-tonight.onrender.com (6 cities, refreshed daily)
 
+**Demo video (80 s):** https://youtu.be/Qw1fkWXfr4o
+
 Cloud cover decides whether a night walk, a meteor shower or a look at the stars is worth getting off the couch for, and it's the forecast variable weather apps get wrong most often. Clear Tonight takes the forecast that was issued about 24 hours ahead, compares 32 months of those forecasts against what actually happened at the same place, and lets **TabPFN v2** learn the pattern of its mistakes. Then it answers one question for tonight: *go or don't go, and when?*
 
 - **Live page (6 cities, refreshed daily):** see `site/`. Deployed as a static site.
