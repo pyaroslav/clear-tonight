@@ -26,6 +26,8 @@ Brier score: lower is better. A *wasted trip* is a night the forecast said "go" 
 
 ### How much history does it need?
 
+![Brier score by nights of history](docs/learning-curve.png)
+
 Training on only the last K nights before each of 6 test months, averaged over 6 cities (raw weather app: **0.237**):
 
 | K nights | TabPFN v2 | Logistic regression | Gradient boosting | Recalibrated app number (1 feature) |

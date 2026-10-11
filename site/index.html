@@ -179,10 +179,11 @@ function renderCurve() {
     .catch(() => fetch(f).then(r => r.json()));
   [T, R] = await Promise.all([load("tonight.json"), load("results.json")]);
   try { city = localStorage.getItem("ct.city") || city; } catch {}
+  if (location.hash.slice(1) in T.cities) city = location.hash.slice(1);  // e.g. #minneapolis
   if (!T.cities[city]) city = Object.keys(T.cities)[0];
   Object.entries(T.cities).forEach(([k, c]) => {
     const b = document.createElement("button"); b.dataset.k = k; b.textContent = c.name;
-    b.onclick = () => { city = k; try { localStorage.setItem("ct.city", k); } catch {} renderCity(); };
+    b.onclick = () => { city = k; try { localStorage.setItem("ct.city", k); } catch {} history.replaceState(null, "", "#" + k); renderCity(); };
     $("#cities").append(b);
   });
   $("#gen").textContent = T.generated.replace("T", " ").replace("Z", "") + " UTC";

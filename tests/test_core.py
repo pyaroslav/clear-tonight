@@ -48,3 +48,15 @@ def test_facts_flag_an_overoptimistic_weather_app():
     res = {"hours": _hours([.5] * 9, app=3), "window": None, "moon": {"illumination": 0}}
     text = " ".join(facts(res))
     assert "MORE optimistic" in text and "weather app is" in text and "dark sky" in text
+
+
+def test_photo_rating_that_disagrees_with_everything_is_held_back():
+    from clear_tonight.__main__ import check_rating
+    # field/2026-10-10: three photos ~5-10%, model 0%, night mode turned one grey -> Gemma said 95%
+    assert check_rating(95, [5, 10, 10], 0.0).startswith("needs review")
+    assert check_rating(10, [5, 95], 0.0) == "ok"
+    # one source disagreeing is not enough when both are available
+    assert check_rating(90, [85, 95], 0.0) == "ok"
+    # alone with the model, a big disagreement is enough
+    assert check_rating(95, [], 0.0).startswith("needs review")
+    assert check_rating(20, [], None) == "ok"

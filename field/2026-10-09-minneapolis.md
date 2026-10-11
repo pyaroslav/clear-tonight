@@ -24,3 +24,7 @@ Astronomical darkness begins about 20:15 CDT. Moon 0% lit (new Moon).
 ## What actually happened
 
 I didn't go out that night, so there's no first-hand report. The walk moved to the next night: [2026-10-10](2026-10-10-minneapolis.md). This forecast stays here unedited, and it will be scored against ERA5 once that data is published (about 5 days later).
+
+### Scoring (pending)
+
+The final ERA5 cloud data for this night is published about 5 days later (around Oct 14–15), and that is what this forecast will be scored against. The early estimates available on Oct 10 disagree with each other: GFS's short-range analysis shows 0–2% cloud from 20:00 to 23:00 and a cloud band at midnight, while Open-Meteo's archive placeholder (ECMWF-based until ERA5 arrives) shows 84% cloud at 20:00, clearing from 21:00. So no verdict yet.

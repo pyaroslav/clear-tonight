@@ -16,6 +16,7 @@ from datetime import date, datetime
 from pathlib import Path
 
 import httpx
+import numpy as np
 
 from . import data
 from .predict import predict_place
@@ -88,6 +89,40 @@ def taken_at(path: Path) -> str:
         return datetime.now().isoformat(timespec="minutes")
 
 
+DISAGREE = 50  # percentage points between a photo's rating and what else we know before it needs a second look
+
+
+def check_rating(cover: int, same_minute: list[int], model_cover: float | None) -> str:
+    """A photo rating is only ground truth if it agrees with the other evidence.
+
+    Night mode can turn a clear twilight sky flat grey, and Gemma then reads it as overcast with high
+    confidence (field/2026-10-10). So a rating far from both the other photos taken around the same time
+    and the weather model's cloud cover for that hour is held back for review instead of being trusted.
+    """
+    reasons = []
+    if same_minute and abs(cover - float(np.median(same_minute))) >= DISAGREE:
+        reasons.append(f"other photos ~{round(float(np.median(same_minute)))}%")
+    if model_cover is not None and abs(cover - model_cover) >= DISAGREE:
+        reasons.append(f"weather model {round(model_cover)}%")
+    if not reasons:
+        return "ok"
+    # with no other photos, disagreeing with the model alone is enough; with photos, both must disagree
+    if same_minute and model_cover is not None and len(reasons) < 2:
+        return "ok"
+    return "needs review: " + ", ".join(reasons)
+
+
+def model_cloud_cover(lat: float, lon: float, when: datetime) -> float | None:
+    """The weather model's own cloud cover for the hour the photo was taken (None if unavailable)."""
+    try:
+        d = data._get("https://api.open-meteo.com/v1/forecast", {
+            "latitude": lat, "longitude": lon, "hourly": "cloud_cover", "timezone": "auto",
+            "start_date": when.date().isoformat(), "end_date": when.date().isoformat()}, attempts=2)
+        return float(d["hourly"]["cloud_cover"][when.hour])
+    except Exception:
+        return None
+
+
 def rate_photo(path: Path, lat: float, lon: float) -> dict:
     schema = {"type": "object", "properties": {
         "cloud_cover_percent": {"type": "integer", "minimum": 0, "maximum": 100},
@@ -98,8 +133,17 @@ def rate_photo(path: Path, lat: float, lon: float) -> dict:
         "This is a photo of the night or evening sky. Estimate what percent of the visible sky is covered by cloud "
         "(0 = completely clear, 100 = overcast), and whether any stars are visible. Ignore trees, buildings and lights.",
         image=path.read_bytes(), schema=schema))
-    row = {"time": taken_at(path), "lat": lat, "lon": lon,
-           "photo": path.name, **out}
+    when = taken_at(path)
+    t = datetime.fromisoformat(when)
+    nearby = []
+    if SKY_LOG.exists():
+        with SKY_LOG.open() as f:
+            for r in csv.DictReader(f):
+                if abs((datetime.fromisoformat(r["time"]) - t).total_seconds()) <= 15 * 60 and r["photo"] != path.name:
+                    nearby.append(int(r["cloud_cover_percent"]))
+    model = model_cloud_cover(lat, lon, t)
+    out["check"] = check_rating(out["cloud_cover_percent"], nearby, model)
+    row = {"time": when, "lat": lat, "lon": lon, "photo": path.name, **out}
     SKY_LOG.parent.mkdir(exist_ok=True)
     new = not SKY_LOG.exists()
     with SKY_LOG.open("a", newline="") as f:
@@ -122,7 +166,7 @@ def main():
     if args.photo:
         r = rate_photo(args.photo, args.lat, args.lon)
         print(f"Gemma 4 sees ~{r['cloud_cover_percent']}% cloud, stars visible: {r['stars_visible']} "
-              f"({r['confidence']} confidence). Logged to {SKY_LOG}.")
+              f"({r['confidence']} confidence). Check: {r['check']}. Logged to {SKY_LOG}.")
         return
 
     key = f"pt{args.lat:+.2f}{args.lon:+.2f}"

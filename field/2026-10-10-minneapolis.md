@@ -39,3 +39,14 @@ I went out into the backyard at about 7:50 PM, a little before full darkness (ab
 **Forecast vs. sky:** hit. The forecast said 96–98% chance of clear sky; it was clear. Open-Meteo's own 15-minute analysis also shows 0% cloud from 17:45 to 20:00. One clear night under a confident forecast proves little on its own; the backtest is the real evidence. This is the part a backtest can't show: it was right, and it was worth going out.
 
 **Gemma got one wrong, with high confidence.** Sky 3 is the same clear sky as sky 1 and 2, but the phone's night mode lifted the twilight and city glow to a flat grey, and Gemma read flat grey as overcast. It said the same thing on three re-runs. So the photo log can't be trusted blindly as ground truth: a photo rating that disagrees with the forecast *and* with the other photos from the same minute needs a second look before it's used to train anything.
+
+### Re-run with the cross-check (same evening)
+
+After this, `--photo` started checking each rating against the other photos taken within 15 minutes and against the weather model's cloud cover for that hour. Re-running the same four photos (Gemma's ratings vary a little between runs):
+
+```
+sky 1     0% cloud, stars visible (high)     check: ok
+sky 2    10% cloud, stars visible (medium)   check: ok
+sky 3    95% cloud, no stars (high)          check: needs review: other photos ~5%, weather model 0%
+backyard 10% cloud, no stars (medium)        check: ok
+```
