@@ -78,6 +78,16 @@ def plan(place: str, result: dict) -> str:
         "No markdown, no lists.\n\n" + "\n".join(facts(result)))
 
 
+def taken_at(path: Path) -> str:
+    """When the photo was taken (EXIF), not when it was rated; falls back to now."""
+    try:
+        from PIL import Image
+        stamp = Image.open(path).getexif().get(306)  # DateTime
+        return datetime.strptime(stamp, "%Y:%m:%d %H:%M:%S").isoformat(timespec="minutes")
+    except Exception:
+        return datetime.now().isoformat(timespec="minutes")
+
+
 def rate_photo(path: Path, lat: float, lon: float) -> dict:
     schema = {"type": "object", "properties": {
         "cloud_cover_percent": {"type": "integer", "minimum": 0, "maximum": 100},
@@ -88,7 +98,7 @@ def rate_photo(path: Path, lat: float, lon: float) -> dict:
         "This is a photo of the night or evening sky. Estimate what percent of the visible sky is covered by cloud "
         "(0 = completely clear, 100 = overcast), and whether any stars are visible. Ignore trees, buildings and lights.",
         image=path.read_bytes(), schema=schema))
-    row = {"time": datetime.now().isoformat(timespec="minutes"), "lat": lat, "lon": lon,
+    row = {"time": taken_at(path), "lat": lat, "lon": lon,
            "photo": path.name, **out}
     SKY_LOG.parent.mkdir(exist_ok=True)
     new = not SKY_LOG.exists()
