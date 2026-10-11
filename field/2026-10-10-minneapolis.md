@@ -34,7 +34,7 @@ I went out into the backyard at about 7:50 PM, a little before full darkness (ab
 | [sky 1](2026-10-10/sky-1-1951.jpg) (19:51) | clear sky, stars | ~5% cloud, stars visible (high confidence) |
 | [sky 2](2026-10-10/sky-2-1951.jpg) (19:51) | clear sky, stars, grey twilight glow | ~10% cloud, stars visible (medium) |
 | [sky 3](2026-10-10/sky-3-1951.jpg) (19:51) | clear sky, stars, brighter grey glow, a tree at the edge | **~95% cloud, no stars (high)**, wrong |
-| [backyard](2026-10-10/backyard-1952.jpg) (19:52) | the yard, a clear blue sky above the trees | ~10% cloud, no stars (medium) |
+| backyard (19:52, not published) | the yard, a clear blue sky above the trees | ~10% cloud, no stars (medium) |
 
 **Forecast vs. sky:** hit. The forecast said 96–98% chance of clear sky; it was clear. Open-Meteo's own 15-minute analysis also shows 0% cloud from 17:45 to 20:00. One clear night under a confident forecast proves little on its own; the backtest is the real evidence. This is the part a backtest can't show: it was right, and it was worth going out.
 
