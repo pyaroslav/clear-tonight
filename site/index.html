@@ -172,7 +172,12 @@ function renderCurve() {
 }
 
 (async () => {
-  [T, R] = await Promise.all([fetch("tonight.json").then(r => r.json()), fetch("results.json").then(r => r.json())]);
+  // The nightly GitHub Action commits tonight.json; read it from the repo so the page is fresh without a redeploy,
+  // and fall back to the copy deployed with the page.
+  const RAW = "https://raw.githubusercontent.com/pyaroslav/clear-tonight/main/site/";
+  const load = f => fetch(RAW + f, {cache: "no-cache"}).then(r => r.ok ? r.json() : Promise.reject())
+    .catch(() => fetch(f).then(r => r.json()));
+  [T, R] = await Promise.all([load("tonight.json"), load("results.json")]);
   try { city = localStorage.getItem("ct.city") || city; } catch {}
   if (!T.cities[city]) city = Object.keys(T.cities)[0];
   Object.entries(T.cities).forEach(([k, c]) => {
