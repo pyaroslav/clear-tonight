@@ -1,20 +1,20 @@
 {
- "generated": "2026-11-25T01:39Z",
+ "generated": "2026-11-26T01:12Z",
  "cities": {
   "seattle": {
    "name": "Seattle, WA",
    "lat": 47.61,
    "lon": -122.33,
-   "night": "2026-11-25",
+   "night": "2026-11-26",
    "hours": [
     {
      "time": "20:00",
-     "p_clear": 0.02,
+     "p_clear": 0.01,
      "app_cloud_cover": 100
     },
     {
      "time": "21:00",
-     "p_clear": 0.02,
+     "p_clear": 0.01,
      "app_cloud_cover": 100
     },
     {
@@ -24,7 +24,7 @@
     },
     {
      "time": "23:00",
-     "p_clear": 0.01,
+     "p_clear": 0.0,
      "app_cloud_cover": 100
     },
     {
@@ -34,359 +34,354 @@
     },
     {
      "time": "01:00",
-     "p_clear": 0.01,
+     "p_clear": 0.0,
      "app_cloud_cover": 100
     },
     {
      "time": "02:00",
-     "p_clear": 0.02,
+     "p_clear": 0.0,
      "app_cloud_cover": 100
     },
     {
      "time": "03:00",
-     "p_clear": 0.02,
-     "app_cloud_cover": 98
+     "p_clear": 0.0,
+     "app_cloud_cover": 100
     },
     {
      "time": "04:00",
-     "p_clear": 0.01,
+     "p_clear": 0.0,
      "app_cloud_cover": 100
     }
    ],
    "window": null,
    "app_clear_hours": 0,
    "moon": {
-    "illumination": 96,
-    "altitude_9pm": 34,
-    "rise": "18:16",
-    "set": "10:23"
+    "illumination": 90,
+    "altitude_9pm": 22,
+    "rise": "19:39",
+    "set": "11:11"
    },
-   "trained_on_nights": 1023
+   "trained_on_nights": 1024
   },
   "minneapolis": {
    "name": "Minneapolis, MN",
    "lat": 44.98,
    "lon": -93.27,
-   "night": "2026-11-25",
+   "night": "2026-11-26",
    "hours": [
     {
      "time": "20:00",
-     "p_clear": 0.38,
-     "app_cloud_cover": 0
+     "p_clear": 0.22,
+     "app_cloud_cover": 99
     },
     {
      "time": "21:00",
-     "p_clear": 0.42,
-     "app_cloud_cover": 0
+     "p_clear": 0.37,
+     "app_cloud_cover": 2
     },
     {
      "time": "22:00",
-     "p_clear": 0.56,
-     "app_cloud_cover": 0
-    },
-    {
-     "time": "23:00",
-     "p_clear": 0.51,
+     "p_clear": 0.37,
      "app_cloud_cover": 3
     },
     {
+     "time": "23:00",
+     "p_clear": 0.45,
+     "app_cloud_cover": 4
+    },
+    {
      "time": "00:00",
-     "p_clear": 0.33,
-     "app_cloud_cover": 92
+     "p_clear": 0.46,
+     "app_cloud_cover": 96
     },
     {
      "time": "01:00",
-     "p_clear": 0.21,
+     "p_clear": 0.54,
+     "app_cloud_cover": 93
+    },
+    {
+     "time": "02:00",
+     "p_clear": 0.53,
+     "app_cloud_cover": 93
+    },
+    {
+     "time": "03:00",
+     "p_clear": 0.55,
+     "app_cloud_cover": 78
+    },
+    {
+     "time": "04:00",
+     "p_clear": 0.47,
+     "app_cloud_cover": 100
+    }
+   ],
+   "window": {
+    "start": "01:00",
+    "end": "04:00",
+    "hours": 3,
+    "p_mean": 0.54
+   },
+   "app_clear_hours": 3,
+   "moon": {
+    "illumination": 91,
+    "altitude_9pm": 22,
+    "rise": "19:47",
+    "set": "10:59"
+   },
+   "trained_on_nights": 1024
+  },
+  "chicago": {
+   "name": "Chicago, IL",
+   "lat": 41.88,
+   "lon": -87.63,
+   "night": "2026-11-26",
+   "hours": [
+    {
+     "time": "20:00",
+     "p_clear": 0.0,
+     "app_cloud_cover": 100
+    },
+    {
+     "time": "21:00",
+     "p_clear": 0.0,
+     "app_cloud_cover": 100
+    },
+    {
+     "time": "22:00",
+     "p_clear": 0.01,
+     "app_cloud_cover": 100
+    },
+    {
+     "time": "23:00",
+     "p_clear": 0.0,
+     "app_cloud_cover": 100
+    },
+    {
+     "time": "00:00",
+     "p_clear": 0.0,
+     "app_cloud_cover": 100
+    },
+    {
+     "time": "01:00",
+     "p_clear": 0.0,
      "app_cloud_cover": 100
     },
     {
      "time": "02:00",
-     "p_clear": 0.19,
+     "p_clear": 0.0,
      "app_cloud_cover": 100
     },
     {
      "time": "03:00",
-     "p_clear": 0.12,
+     "p_clear": 0.0,
      "app_cloud_cover": 100
     },
     {
      "time": "04:00",
-     "p_clear": 0.2,
+     "p_clear": 0.0,
      "app_cloud_cover": 100
+    }
+   ],
+   "window": null,
+   "app_clear_hours": 0,
+   "moon": {
+    "illumination": 91,
+    "altitude_9pm": 25,
+    "rise": "19:36",
+    "set": "10:24"
+   },
+   "trained_on_nights": 1024
+  },
+  "denver": {
+   "name": "Denver, CO",
+   "lat": 39.74,
+   "lon": -104.99,
+   "night": "2026-11-26",
+   "hours": [
+    {
+     "time": "20:00",
+     "p_clear": 0.9,
+     "app_cloud_cover": 1
+    },
+    {
+     "time": "21:00",
+     "p_clear": 0.39,
+     "app_cloud_cover": 0
+    },
+    {
+     "time": "22:00",
+     "p_clear": 0.55,
+     "app_cloud_cover": 0
+    },
+    {
+     "time": "23:00",
+     "p_clear": 0.58,
+     "app_cloud_cover": 0
+    },
+    {
+     "time": "00:00",
+     "p_clear": 0.44,
+     "app_cloud_cover": 0
+    },
+    {
+     "time": "01:00",
+     "p_clear": 0.67,
+     "app_cloud_cover": 0
+    },
+    {
+     "time": "02:00",
+     "p_clear": 0.32,
+     "app_cloud_cover": 0
+    },
+    {
+     "time": "03:00",
+     "p_clear": 0.77,
+     "app_cloud_cover": 0
+    },
+    {
+     "time": "04:00",
+     "p_clear": 0.41,
+     "app_cloud_cover": 81
     }
    ],
    "window": {
     "start": "22:00",
     "end": "00:00",
     "hours": 2,
-    "p_mean": 0.54
+    "p_mean": 0.56
    },
-   "app_clear_hours": 4,
+   "app_clear_hours": 8,
    "moon": {
-    "illumination": 97,
-    "altitude_9pm": 34,
-    "rise": "18:27",
-    "set": "10:08"
+    "illumination": 91,
+    "altitude_9pm": 22,
+    "rise": "19:56",
+    "set": "10:28"
    },
-   "trained_on_nights": 1023
-  },
-  "chicago": {
-   "name": "Chicago, IL",
-   "lat": 41.88,
-   "lon": -87.63,
-   "night": "2026-11-25",
-   "hours": [
-    {
-     "time": "20:00",
-     "p_clear": 0.01,
-     "app_cloud_cover": 100
-    },
-    {
-     "time": "21:00",
-     "p_clear": 0.01,
-     "app_cloud_cover": 97
-    },
-    {
-     "time": "22:00",
-     "p_clear": 0.01,
-     "app_cloud_cover": 100
-    },
-    {
-     "time": "23:00",
-     "p_clear": 0.01,
-     "app_cloud_cover": 100
-    },
-    {
-     "time": "00:00",
-     "p_clear": 0.01,
-     "app_cloud_cover": 100
-    },
-    {
-     "time": "01:00",
-     "p_clear": 0.03,
-     "app_cloud_cover": 89
-    },
-    {
-     "time": "02:00",
-     "p_clear": 0.01,
-     "app_cloud_cover": 100
-    },
-    {
-     "time": "03:00",
-     "p_clear": 0.01,
-     "app_cloud_cover": 100
-    },
-    {
-     "time": "04:00",
-     "p_clear": 0.01,
-     "app_cloud_cover": 100
-    }
-   ],
-   "window": null,
-   "app_clear_hours": 0,
-   "moon": {
-    "illumination": 97,
-    "altitude_9pm": 37,
-    "rise": "18:17",
-    "set": "09:30"
-   },
-   "trained_on_nights": 1023
-  },
-  "denver": {
-   "name": "Denver, CO",
-   "lat": 39.74,
-   "lon": -104.99,
-   "night": "2026-11-25",
-   "hours": [
-    {
-     "time": "20:00",
-     "p_clear": 0.55,
-     "app_cloud_cover": 59
-    },
-    {
-     "time": "21:00",
-     "p_clear": 0.59,
-     "app_cloud_cover": 4
-    },
-    {
-     "time": "22:00",
-     "p_clear": 0.35,
-     "app_cloud_cover": 80
-    },
-    {
-     "time": "23:00",
-     "p_clear": 0.6,
-     "app_cloud_cover": 0
-    },
-    {
-     "time": "00:00",
-     "p_clear": 0.67,
-     "app_cloud_cover": 0
-    },
-    {
-     "time": "01:00",
-     "p_clear": 0.53,
-     "app_cloud_cover": 82
-    },
-    {
-     "time": "02:00",
-     "p_clear": 0.63,
-     "app_cloud_cover": 78
-    },
-    {
-     "time": "03:00",
-     "p_clear": 0.35,
-     "app_cloud_cover": 99
-    },
-    {
-     "time": "04:00",
-     "p_clear": 0.19,
-     "app_cloud_cover": 100
-    }
-   ],
-   "window": {
-    "start": "23:00",
-    "end": "03:00",
-    "hours": 4,
-    "p_mean": 0.61
-   },
-   "app_clear_hours": 3,
-   "moon": {
-    "illumination": 96,
-    "altitude_9pm": 35,
-    "rise": "18:39",
-    "set": "09:34"
-   },
-   "trained_on_nights": 1023
+   "trained_on_nights": 1024
   },
   "austin": {
    "name": "Austin, TX",
    "lat": 30.27,
    "lon": -97.74,
-   "night": "2026-11-25",
+   "night": "2026-11-26",
    "hours": [
     {
      "time": "20:00",
-     "p_clear": 1.0,
-     "app_cloud_cover": 0
+     "p_clear": 0.0,
+     "app_cloud_cover": 100
     },
     {
      "time": "21:00",
-     "p_clear": 1.0,
-     "app_cloud_cover": 0
-    },
-    {
-     "time": "22:00",
-     "p_clear": 1.0,
-     "app_cloud_cover": 0
-    },
-    {
-     "time": "23:00",
-     "p_clear": 1.0,
-     "app_cloud_cover": 0
-    },
-    {
-     "time": "00:00",
-     "p_clear": 1.0,
-     "app_cloud_cover": 0
-    },
-    {
-     "time": "01:00",
-     "p_clear": 0.99,
-     "app_cloud_cover": 0
-    },
-    {
-     "time": "02:00",
-     "p_clear": 0.99,
-     "app_cloud_cover": 0
-    },
-    {
-     "time": "03:00",
-     "p_clear": 1.0,
-     "app_cloud_cover": 0
-    },
-    {
-     "time": "04:00",
-     "p_clear": 1.0,
-     "app_cloud_cover": 0
-    }
-   ],
-   "window": {
-    "start": "20:00",
-    "end": "05:00",
-    "hours": 9,
-    "p_mean": 1.0
-   },
-   "app_clear_hours": 9,
-   "moon": {
-    "illumination": 97,
-    "altitude_9pm": 27,
-    "rise": "19:40",
-    "set": "09:31"
-   },
-   "trained_on_nights": 1023
-  },
-  "london": {
-   "name": "London, UK",
-   "lat": 51.51,
-   "lon": -0.13,
-   "night": "2026-11-25",
-   "hours": [
-    {
-     "time": "20:00",
-     "p_clear": 0.13,
-     "app_cloud_cover": 77
-    },
-    {
-     "time": "21:00",
-     "p_clear": 0.16,
+     "p_clear": 0.0,
      "app_cloud_cover": 100
     },
     {
      "time": "22:00",
-     "p_clear": 0.14,
+     "p_clear": 0.0,
      "app_cloud_cover": 100
     },
     {
      "time": "23:00",
-     "p_clear": 0.14,
+     "p_clear": 0.0,
      "app_cloud_cover": 100
     },
     {
      "time": "00:00",
-     "p_clear": 0.11,
+     "p_clear": 0.0,
      "app_cloud_cover": 100
     },
     {
      "time": "01:00",
-     "p_clear": 0.1,
+     "p_clear": 0.0,
      "app_cloud_cover": 100
     },
     {
      "time": "02:00",
-     "p_clear": 0.11,
+     "p_clear": 0.0,
      "app_cloud_cover": 100
     },
     {
      "time": "03:00",
-     "p_clear": 0.11,
+     "p_clear": 0.0,
      "app_cloud_cover": 100
     },
     {
      "time": "04:00",
-     "p_clear": 0.11,
-     "app_cloud_cover": 49
+     "p_clear": 0.0,
+     "app_cloud_cover": 100
     }
    ],
    "window": null,
    "app_clear_hours": 0,
    "moon": {
-    "illumination": 98,
-    "altitude_9pm": 39,
-    "rise": "17:15",
-    "set": "10:20"
+    "illumination": 91,
+    "altitude_9pm": 14,
+    "rise": "20:53",
+    "set": "10:29"
    },
-   "trained_on_nights": 1023
+   "trained_on_nights": 1024
+  },
+  "london": {
+   "name": "London, UK",
+   "lat": 51.51,
+   "lon": -0.13,
+   "night": "2026-11-26",
+   "hours": [
+    {
+     "time": "20:00",
+     "p_clear": 0.14,
+     "app_cloud_cover": 100
+    },
+    {
+     "time": "21:00",
+     "p_clear": 0.07,
+     "app_cloud_cover": 100
+    },
+    {
+     "time": "22:00",
+     "p_clear": 0.04,
+     "app_cloud_cover": 58
+    },
+    {
+     "time": "23:00",
+     "p_clear": 0.03,
+     "app_cloud_cover": 79
+    },
+    {
+     "time": "00:00",
+     "p_clear": 0.03,
+     "app_cloud_cover": 100
+    },
+    {
+     "time": "01:00",
+     "p_clear": 0.03,
+     "app_cloud_cover": 100
+    },
+    {
+     "time": "02:00",
+     "p_clear": 0.03,
+     "app_cloud_cover": 100
+    },
+    {
+     "time": "03:00",
+     "p_clear": 0.03,
+     "app_cloud_cover": 100
+    },
+    {
+     "time": "04:00",
+     "p_clear": 0.04,
+     "app_cloud_cover": 100
+    }
+   ],
+   "window": null,
+   "app_clear_hours": 0,
+   "moon": {
+    "illumination": 92,
+    "altitude_9pm": 28,
+    "rise": "18:40",
+    "set": "11:10"
+   },
+   "trained_on_nights": 1024
   }
  }
 }
